@@ -16,8 +16,8 @@
 				<v-app>
 					<v-layout row wrap align center justify-center>
 					<!-- PLACE FOR ADDING OF CONTENT -->
-					
-						<v-form ref="form" v-model="valid" lazy-validation class="authorization-form">
+						<v-form ref="form" v-model="valid" lazy-validation class="authorization-form">						
+							<div class="form-state">{{formLabel}}</div>
 							<v-text-field
 								v-model="email"
 								:rules="emailRules"
@@ -28,20 +28,33 @@
 								:rules="passwordRules"
 								label="Пароль"
 								type="password"
+								v-model = "password"
+								required
+							></v-text-field>
+							<v-text-field
+								:rules="repasswordRules"
+								label="Повторите пароль"
+								v-model = "repassword"
+								type="password"
+								v-if = "retryPasswordFlag"
 								required
 							></v-text-field>
 
+							<v-checkbox
+								v-model="checkbox"
+								label="Запомнить меня"
+								v-if = "!retryPasswordFlag"
+							></v-checkbox>
 							<v-btn
 								:disabled="!valid"
 								@click="submit"
 							>
-							Войти							
+							ОК							
 							</v-btn>
-							<v-btn @click="clear">Регистрация</v-btn>
+							<v-btn @click="registration">{{buttonSubmit}}</v-btn>
 						</v-form>
 					
 					<!-- END PLACE FOR ADDING OF CONTENT -->
-					
 					</v-layout>
 				</v-app>
 			</template>
