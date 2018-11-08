@@ -53,7 +53,7 @@
 					</v-navigation-drawer>
 					<!-- end menu block -->
 					<!-- Toolbar -->
-					<v-toolbar dark color="primary">
+					<v-toolbar dark color="primary" class="my-toolbar">
 						<v-toolbar-side-icon v-on:click.stop="menuEnable = !menuEnable"></v-toolbar-side-icon>
 						<v-toolbar-title class="white--text">мофильмы.рф</v-toolbar-title>
 						<v-spacer></v-spacer>
@@ -73,9 +73,9 @@
 					</v-toolbar>
 					<!-- End toolbar -->
 					<v-layout row wrap align center justify-center>
-						<v-expansion-panel popout>
+						<v-expansion-panel popout class="my-panel">
 						  <v-expansion-panel-content
-							v-for="(item,i) in 5"
+							v-for="(item,i) in 6"
 							:key="i"
 						  >
 							<div slot="header">Item</div>
@@ -107,5 +107,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.js"></script>
+	<script src="js/axios.js"></script>
 	<script src="js/script.js"></script>
 </html>

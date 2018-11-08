@@ -12,15 +12,20 @@
 .vunch{
 	width:100%
 }
-
+.standart-form {width:90%;}
+.authorization-form {width:90%; margin-top:30px;}
 .my-form{ width: 90%; margin-top:20px;}
 .my-form button{margin:0; float:right;}
 
 /* NEW MENU STYLES */
 
 .my-menu{width:220px;}
+.my-toolbar{margin-bottom:10px;}
 
 /* END NEW MENU STYLES */
+
+.my-panel{ height: 50px; margin-bottom: 10px;}
+.my-panel li{box-shadow: 0 0 2px rgba(0,0,0, .6); }
 
 
 /* NEXT STYLE FOR OLD MENU */

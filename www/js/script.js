@@ -59,3 +59,37 @@ var app = new Vue({
     mounted() {
     }
 })
+var app = new Vue({
+	el: '.authContainer',
+	data: {
+		valid: true,
+		passwordRules: [
+			v => !!v || 'Обязательное поле',
+			v => (v && v.length >= 5) || 'Пароль должен быть более 5 символов'
+		],
+		email: '',
+		emailRules: [
+			v => !!v || 'Обязательное поле',
+			v => /.+@.+/.test(v) || 'Пожалуйста, введите email'
+		]
+	},
+	methods:{
+		submit () {
+			if (this.$refs.form.validate()) {
+				// Native form submission is not yet supported
+					axios.post('/api/submit', {
+					email: this.email,
+					password: this.password
+				})
+			}
+		},
+		clear () {
+			this.$refs.form.reset()
+		}
+	},
+	
+	computed: {
+    },
+    mounted() {
+    }
+})
