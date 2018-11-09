@@ -1,10 +1,4 @@
 ﻿
-const router = new VueRouter({
-  mode: 'history',
-  routes: [
-    { path: '/', component: Home }
-  ]
-})
 
 Vue.component('menu-items',{
 	props:['name'],
@@ -86,18 +80,26 @@ var app2 = new Vue({
 		retryPasswordFlag: false, 
 		formLabel: "Авторизируйтесь",
 		buttonSubmit: "Регистрация", 
-		submitUrl: "registration",
-		comparePasswordFlag: false
+		submitUrl: "auth"
 	},
 	methods:{
 		submit () {
-			if (this.$refs.form.validate() && comparePasswordFlag) {
-				console.log(`Email: ${this.email} passwrod ${this.password} this: ${this}`);
+			if (this.$refs.form.validate()) {
+				console.log(`Email: ${this.email} passwrod ${this.password} action: ${this.submitUrl}`);
 				// Native form submission is not yet supported
-					axios.post('/https://quicknote.bget.ru/user/'+this.submitUrl, {
-					email: this.email,
-					password: this.password
-				})
+					axios.get('http://quicknote.bget.ru/', {
+						params:{
+							email: this.email,
+							password: this.password,
+							action:this.submitUrl
+						}
+				}).then(response => {
+					console.log(response.data);
+					let request = response.data;
+					if(data.status) sqLiteAddUser(data);
+				}).catch(error => {					
+					console.log(error);
+				});
 			}
 		},
 		clear () {
@@ -106,13 +108,11 @@ var app2 = new Vue({
 		registration (){
 			this.buttonSubmit = (this.retryPasswordFlag) ? "Регистрация" : "Авторизация";
 			this.formLabel = (this.retryPasswordFlag) ? "Авторизируйтесь" : "Зарегистрируйтесь";
-			this.submitUrl = (this.retryPasswordFlag) ? "authorization" : "registration";
+			this.submitUrl = (this.retryPasswordFlag) ? "auth" : "addUser";
 			this.retryPasswordFlag = !this.retryPasswordFlag;
 		},
-		comparePassword(){
-			console.log(`Email: ${this.password} passwrod ${this.repassword} `);
-			comparePasswordFlag = this.password == this.repassword;
-			console.log(comparePasswordFlag);
+		sqLiteAddUser(data){
+			
 		}
 	},
 	
