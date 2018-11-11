@@ -44,6 +44,7 @@
 								v-model="checkbox"
 								label="Запомнить меня"
 								v-if = "!retryPasswordFlag"
+								v-on:click.stop="autoauth = !autoauth"
 							></v-checkbox>
 							<v-btn
 								:disabled="!valid"
@@ -81,5 +82,5 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.js"></script>
 	<script src="js/axios.min.js"></script>
 	<script src="js/sql.js"></script>
-	<script src="js/script.js"></script>
+	<script src="js/auth.js"></script>
 </html>

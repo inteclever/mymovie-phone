@@ -15,6 +15,7 @@ Vue.component('block-page',{
 var app = new Vue({
 	el: '.movieContainer',
 	data: {
+		db: window.openDatabase("Database", "1.0", "mymoviedb", 200000),
 		typeMovieSelected:{name:'Фильм', id:1},
 		typeMovie:[
 			{name:'Фильм', id:1},
@@ -49,74 +50,12 @@ var app = new Vue({
 			var part = this.messages.slice(1,5);
 			this.messages = part;
 			for(item in oldMessages) this.messages.push({id:oldMessages[item].id, text:oldMessages[item].text});		
-		}
-	},
-	
-	computed: {
-    },
-    mounted() {
-    }
-})
-var app2 = new Vue({
-	el: '.authContainer',
-	data: {
-		valid: true,
-		password: null, 
-		passwordRules: [
-			v => !!v || 'Обязательное поле',
-			v => (v && v.length >= 5) || 'Пароль должен быть более 5 символов'
-		],
-		repassword: null,
-		repasswordRules: [
-			v => !!v || 'Обязательное поле',
-			v => app2.password == app2.repassword || 'Должно совпадать с полем "Пароль"'
-		],
-		email: '',
-		emailRules: [
-			v => !!v || 'Обязательное поле',
-			v => /.+@.+/.test(v) || 'Пожалуйста, введите email'
-		],
-		checkbox: false,
-		retryPasswordFlag: false, 
-		formLabel: "Авторизируйтесь",
-		buttonSubmit: "Регистрация", 
-		submitUrl: "auth",
-		request: ""
-	},
-	methods:{		
-		submit () {
-			if (this.$refs.form.validate()) {
-				console.log(`Email: ${this.email} passwrod ${this.password} action: ${this.submitUrl}`);
-				// Native form submission is not yet supported
-					axios.get('http://quicknote.bget.ru/', {
-						params:{
-							email: this.email,
-							password: this.password,
-							action:this.submitUrl
-						}
-				}).then(response => {
-					console.log(response);
-					let request = response.data;
-					this.request = response.data.info;
-					if(request.status) sqLiteAddUser(request);
-				}).catch(error => {					
-					console.log(error);
-					this.request = response.data.info;
-				});
+		},
+		clickContextMenu(id){
+			if(id==1){
+				this.db.transaction(function(tx){tx.executeSql('DROP TABLE IF EXISTS users');});
+				window.location.replace("index.html");				
 			}
-		},
-		clear () {
-			this.$refs.form.reset()
-		},
-		registration (){
-			this.buttonSubmit = (this.retryPasswordFlag) ? "Регистрация" : "Авторизация";
-			this.formLabel = (this.retryPasswordFlag) ? "Авторизируйтесь" : "Зарегистрируйтесь";
-			this.submitUrl = (this.retryPasswordFlag) ? "auth" : "addUser";
-			this.retryPasswordFlag = !this.retryPasswordFlag;
-			this.request = "";
-		},
-		sqLiteAddUser(data){
-			
 		}
 	},
 	

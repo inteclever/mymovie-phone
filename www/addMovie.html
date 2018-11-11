@@ -65,7 +65,7 @@
 								<v-list-tile
 									v-for="(item, index) in menuContext"
 									:key="item.id"
-									@click="">
+									@click="clickContextMenu(item.id)">
 									<v-list-tile-title >{{ item.name }}</v-list-tile-title>
 								</v-list-tile>
 							</v-list>
@@ -116,6 +116,8 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.js"></script>
-	<script src="js/axios.js"></script>
+	
+	<script src="js/axios.min.js"></script>
+	<script src="js/sql.js"></script>
 	<script src="js/script.js"></script>
 </html>
