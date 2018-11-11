@@ -1,3 +1,4 @@
+*{font-size:1em;}
 .block{
 	min-width:250px;
 	width:31%;
@@ -14,7 +15,7 @@
 }
 .standart-form {width:90%;}
 /* AUTH PAGE */
-.authorization-form {width:90%; margin-top:30px;}
+.authorization-form {width:90%; display:block; margin-top:30px;}
 .form-state{text-align:center; margin:0 auto; margin-bottom:20px; height:40px; font-size:1.5em; border-bottom: 2px solid #1976d2; width: 300px;}
 /* END AUTH PAGE */
 
@@ -31,7 +32,7 @@
 .my-panel{ height: 50px; margin-bottom: 10px;}
 .my-panel li{box-shadow: 0 0 2px rgba(0,0,0, .6); }
 
-
+.auth-request{display:block; text-align:center;}
 /* NEXT STYLE FOR OLD MENU */
 .menu{
 	height:100%;

@@ -80,9 +80,10 @@ var app2 = new Vue({
 		retryPasswordFlag: false, 
 		formLabel: "Авторизируйтесь",
 		buttonSubmit: "Регистрация", 
-		submitUrl: "auth"
+		submitUrl: "auth",
+		request: ""
 	},
-	methods:{
+	methods:{		
 		submit () {
 			if (this.$refs.form.validate()) {
 				console.log(`Email: ${this.email} passwrod ${this.password} action: ${this.submitUrl}`);
@@ -94,11 +95,13 @@ var app2 = new Vue({
 							action:this.submitUrl
 						}
 				}).then(response => {
-					console.log(response.data);
+					console.log(response);
 					let request = response.data;
-					if(data.status) sqLiteAddUser(data);
+					this.request = response.data.info;
+					if(request.status) sqLiteAddUser(request);
 				}).catch(error => {					
 					console.log(error);
+					this.request = response.data.info;
 				});
 			}
 		},
@@ -110,6 +113,7 @@ var app2 = new Vue({
 			this.formLabel = (this.retryPasswordFlag) ? "Авторизируйтесь" : "Зарегистрируйтесь";
 			this.submitUrl = (this.retryPasswordFlag) ? "auth" : "addUser";
 			this.retryPasswordFlag = !this.retryPasswordFlag;
+			this.request = "";
 		},
 		sqLiteAddUser(data){
 			
