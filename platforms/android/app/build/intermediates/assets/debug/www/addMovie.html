@@ -1,0 +1,121 @@
+﻿<html>
+	<head>
+		<title>
+			Vue JS
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+	</head>
+	<body>
+		<div class="movieContainer" >
+			<template>
+				<v-app>
+					<!--  Start menu block -->
+					<v-navigation-drawer
+						v-model="menuEnable"
+						absolute
+						temporary
+						class="my-menu"
+					>
+						<v-list class="pa-1">
+							<v-list-tile avatar>
+								<v-list-tile-avatar>
+									<img src="https://randomuser.me/api/portraits/men/85.jpg">
+								</v-list-tile-avatar>
+
+								<v-list-tile-content>
+									<v-list-tile-title>Моифильмы.рф</v-list-tile-title>
+								</v-list-tile-content>
+							</v-list-tile>
+						</v-list>
+						<v-list class="pt-0" dense>
+							<v-divider></v-divider>
+
+							<v-list-tile
+								v-for="item in menu"
+								key="item.id"
+								:href="item.href"
+								@click=""
+							>
+								<v-list-tile-action>
+									<v-icon>{{ item.icon }}</v-icon>
+								</v-list-tile-action>
+
+								<v-list-tile-content>
+									<v-list-tile-title>{{ item.name }}</v-list-tile-title>
+								</v-list-tile-content>
+							</v-list-tile>
+						</v-list>
+					</v-navigation-drawer>
+					<!-- end menu block -->
+					<!-- Toolbar -->
+					<v-toolbar dark color="primary" class="my-toolbar">
+						<v-toolbar-side-icon v-on:click.stop="menuEnable = !menuEnable"></v-toolbar-side-icon>
+						<v-toolbar-title class="white--text">мофильмы.рф</v-toolbar-title>
+						<v-spacer></v-spacer>
+						<v-menu offset-y>
+							<v-btn icon slot="activator" color="primary" dark>
+								<v-icon>more_vert</v-icon>
+							</v-btn>
+							<v-list>
+								<v-list-tile
+									v-for="(item, index) in menuContext"
+									:key="item.id"
+									@click="">
+									<v-list-tile-title >{{ item.name }}</v-list-tile-title>
+								</v-list-tile>
+							</v-list>
+						</v-menu>
+					</v-toolbar>
+					<!-- End toolbar -->
+					<v-layout row wrap align center justify-center>
+					<!-- PLACE FOR ADDING OF CONTENT -->
+						<v-form  class="my-form" id="vaclav">
+							<v-text-field
+								label="Название фильмы / сериала"
+								required
+							></v-text-field>
+							<v-select 
+								label="Это фильм или сериал?" 
+								:items="typeMovie"
+								item-text="name"
+								item-value="id"
+								v-model="typeMovieSelected"
+							></v-select>
+							<v-btn
+								@click="saveMovie();"
+							>Добавить
+							</v-btn>
+						</v-form>	
+					
+					<!-- END PLACE FOR ADDING OF CONTENT -->
+					</v-layout>
+				</v-app>
+			</template>
+		</div>
+	</body>
+	
+	<!-- OLD MENU 	
+	  <div v-bind:class="menu_class" v-if="menu_enable">
+		<div class="close-menu" v-on:click="menu_enable = false;">
+			<span></span>
+		</div>
+		<menu-items 
+			v-for="item in menu"
+			v-bind:key = "item.id"
+			v-bind:id="item.id"
+			v-bind:name="item.name"
+			v-bind:class="menuItem_class">					
+		</menu-items>
+	  </div>
+	END OLD MENU -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.js"></script>
+	<script src="js/axios.js"></script>
+	<script src="js/script.js"></script>
+</html>

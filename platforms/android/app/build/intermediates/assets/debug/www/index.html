@@ -11,87 +11,49 @@
 
 	</head>
 	<body>
-		<div class="movieContainer" >
+		<div class="authContainer" >
 			<template>
 				<v-app>
-					<!--  Start menu block -->
-					<v-navigation-drawer
-						v-model="menuEnable"
-						absolute
-						temporary
-						class="my-menu"
-					>
-						<v-list class="pa-1">
-							<v-list-tile avatar>
-								<v-list-tile-avatar>
-									<img src="https://randomuser.me/api/portraits/men/85.jpg">
-								</v-list-tile-avatar>
-
-								<v-list-tile-content>
-									<v-list-tile-title>Моифильмы.рф</v-list-tile-title>
-								</v-list-tile-content>
-							</v-list-tile>
-						</v-list>
-						<v-list class="pt-0" dense>
-							<v-divider></v-divider>
-
-							<v-list-tile
-								v-for="item in menu"
-								key="item.id"
-								:href="item.href"
-								@click=""
-							>
-								<v-list-tile-action>
-									<v-icon>{{ item.icon }}</v-icon>
-								</v-list-tile-action>
-
-								<v-list-tile-content>
-									<v-list-tile-title>{{ item.name }}</v-list-tile-title>
-								</v-list-tile-content>
-							</v-list-tile>
-						</v-list>
-					</v-navigation-drawer>
-					<!-- end menu block -->
-					<!-- Toolbar -->
-					<v-toolbar dark color="primary" class="my-toolbar">
-						<v-toolbar-side-icon v-on:click.stop="menuEnable = !menuEnable"></v-toolbar-side-icon>
-						<v-toolbar-title class="white--text">мофильмы.рф</v-toolbar-title>
-						<v-spacer></v-spacer>
-						<v-menu offset-y>
-							<v-btn icon slot="activator" color="primary" dark>
-								<v-icon>more_vert</v-icon>
-							</v-btn>
-							<v-list>
-								<v-list-tile
-									v-for="(item, index) in menuContext"
-									:key="item.id"
-									@click="">
-									<v-list-tile-title >{{ item.name }}</v-list-tile-title>
-								</v-list-tile>
-							</v-list>
-						</v-menu>
-					</v-toolbar>
-					<!-- End toolbar -->
 					<v-layout row wrap align center justify-center>
 					<!-- PLACE FOR ADDING OF CONTENT -->
-						<v-form  class="my-form" id="vaclav">
+						<v-form ref="form" v-model="valid" lazy-validation class="authorization-form">						
+							<div class="form-state">{{formLabel}}</div>
 							<v-text-field
-								label="Название фильмы / сериала"
+								v-model="email"
+								:rules="emailRules"
+								label="E-mail"
 								required
 							></v-text-field>
-							<v-select 
-								label="Это фильм или сериал?" 
-								:items="typeMovie"
-								item-text="name"
-								item-value="id"
-								v-model="typeMovieSelected"
-							></v-select>
+							<v-text-field
+								:rules="passwordRules"
+								label="Пароль"
+								type="password"
+								v-model = "password"
+								required
+							></v-text-field>
+							<v-text-field
+								:rules="repasswordRules"
+								label="Повторите пароль"
+								v-model = "repassword"
+								type="password"
+								v-if = "retryPasswordFlag"
+								required
+							></v-text-field>
+
+							<v-checkbox
+								v-model="checkbox"
+								label="Запомнить меня"
+								v-if = "!retryPasswordFlag"
+							></v-checkbox>
 							<v-btn
-								@click="saveMovie();"
-							>Добавить
+								:disabled="!valid"
+								@click="submit"
+							>
+							ОК							
 							</v-btn>
-						</v-form>	
-					
+							<v-btn @click="registration">{{buttonSubmit}}</v-btn>
+							<span class="auth-request">{{request}}</span>
+						</v-form>
 					<!-- END PLACE FOR ADDING OF CONTENT -->
 					</v-layout>
 				</v-app>
@@ -113,9 +75,11 @@
 		</menu-items>
 	  </div>
 	END OLD MENU -->
+	<script type="module" src="/templates/addMovie.vue"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.js"></script>
-	<script src="js/axios.js"></script>
+	<script src="js/axios.min.js"></script>
+	<script src="js/sql.js"></script>
 	<script src="js/script.js"></script>
 </html>

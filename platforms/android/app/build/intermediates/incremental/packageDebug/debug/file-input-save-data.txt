@@ -1,7 +1,7 @@
 #Internal package file, do not edit.
-#Sun Nov 11 15:52:23 KRAT 2018
+#Sun Nov 11 15:56:00 KRAT 2018
 17.baseType=DIRECTORY
-4.path=www/auth.html
+4.path=www/addMovie.html
 8.set=ASSET
 11.set=ASSET
 2.baseType=DIRECTORY
