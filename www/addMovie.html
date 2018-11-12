@@ -76,6 +76,8 @@
 					<!-- PLACE FOR ADDING OF CONTENT -->
 						<v-form  class="my-form" id="vaclav">
 							<v-text-field
+								:rules= "movieNameRule"
+								v-model="movieName"
 								label="Название фильмы / сериала"
 								required
 							></v-text-field>
@@ -87,9 +89,11 @@
 								v-model="typeMovieSelected"
 							></v-select>
 							<v-btn
-								@click="saveMovie();"
-							>Добавить
+								:disabled = "enableAddMovieButton"
+								@click="saveMovie"
+							>{{addMovieButtonName}}
 							</v-btn>
+							<span class="auth-request" v-html="htmlRequest"></span>
 						</v-form>	
 					
 					<!-- END PLACE FOR ADDING OF CONTENT -->

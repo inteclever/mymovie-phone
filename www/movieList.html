@@ -73,16 +73,60 @@
 					</v-toolbar>
 					<!-- End toolbar -->
 					<v-layout row wrap align center justify-center>
-						<v-expansion-panel popout class="my-panel">
+						<v-expansion-panel popout class="my-panel" v-if = "showCards">
 						  <v-expansion-panel-content
-							v-for="(item,i) in 6"
+							v-for="(film, i) in films"
 							:key="i"
 						  >
-							<div slot="header">Item</div>
+							<div slot="header"><b>{{film.name}}</b> ({{film.date}})</div>
 							<v-card>
-							  <v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</v-card-text>
+								<v-card-text>
+									<div v-if="!film.film_info">
+										<form>
+											Информация отсутвует
+											<v-text-field
+												label="Уточните название фильма?"
+												v-model = film.name
+												:value="film.name"
+												required
+											></v-text-field>
+											<v-btn
+												id = "film.name"
+												@click = "searchFilm(film.name)"
+											>
+												{{searchMovieButtonName}}
+											</v-btn>
+										</form>
+									</div>
+								</v-card-text>
 							</v-card>
 						  </v-expansion-panel-content>
+						</v-expansion-panel>
+						
+						<!-- NEXT CARD LIST FOR SEARCHED FILMS --->
+						<v-expansion-panel popout class="my-panel" v-if = "!showCards">
+						  <v-expansion-panel-content
+							v-for="(film, i) in searchedFilms"
+							:key="i"
+						  >
+							<div slot="header"><b>{{film.name}}</b> ({{film.date}})</div>
+							<v-card>
+								<v-card-text>
+									<div v-if="!film.film_info">
+										<form>
+											<img :src="film.imgSrc"/>
+											<div>Рейтинг: {{film.rating}}</div>
+											<div>Год выпуска: {{film.date}}</div>
+											<v-btn @click = "getDescriptionFilm(film.url)" > Описание </v-btn>
+											<v-btn @click = "" > Это он! </v-btn>
+										</form>
+									</div>
+								</v-card-text>
+							</v-card>
+						  </v-expansion-panel-content>
+							<v-btn id = "i" v-on:click = "showCards = !showCards" >
+								{{filmsLoadingButton}}
+							</v-btn>
 						</v-expansion-panel>
 					</v-layout>
 				</v-app>
@@ -107,6 +151,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.js"></script>
-	<script src="js/axios.js"></script>
-	<script src="js/script.js"></script>
+	<script src="js/axios.min.js"></script>
+	<script src="js/movieList.js"></script>
 </html>

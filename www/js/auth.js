@@ -46,6 +46,13 @@ var app2 = new Vue({
 					if(request.status && !this.retryPasswordFlag){
 						this.requestData = request.data;
 						this.sqLiteAddUser();
+												
+						/*
+						*	REPLACE LOCATION 
+						*	TO ADD MOVIE PAGE
+						*/
+						window.location.replace("addMovie.html");
+						
 					}else if(request.status && this.retryPasswordFlag){
 						this.refreshDB();
 					}

@@ -17,12 +17,7 @@ var app = new Vue({
 	data: {
 		db: window.openDatabase("Database", "1.0", "mymoviedb", 200000),
 		userData: {},
-		movieNameRule: [v => (v && v.length > 0) || 'Введите название фильма'],
-		typeMovieSelected:1,
-		typeMovie:[
-			{name:'Фильм', id:1},
-			{name:'Сериал', id:2}
-		],
+		menuEnable: null, // close or open main menu
 		menu:[
 			{name:'Добавить фльм', id:1, icon:'add_circle_outline', href:'addMovie.html'},
 			{name:'Мои фильмы', id:2, icon:'ondemand_video', href:'movieList.html'},
@@ -32,29 +27,17 @@ var app = new Vue({
 			{name:'Выйти', id:1},
 			{name:'Закрыть', id:2}
 		],
-		still: 'It still text',
-		vunch_css:'block',
-		menu_class:'menu',
+		/* container for film list of user*/
+		films:[],
+		searchedFilms:[],
 		menuItem_class:'menu-item',
-		movieName: null,
-		menuEnable: null, // close or open main menu
-		compiled: null, 
 		htmlRequest: null,
-		enableAddMovieButton: false,
-		addMovieButtonName: "Добавить"
-		
+		showCards: true,
+		enableSearchMovieButton: false,
+		searchMovieButtonName: "Найти фильмм",
+		filmsLoadingButton: "Подождите, загружаю схожие фильмы..."
 	},
 	methods:{
-		animation: function(){
-			var count = this.messages.length;
-			this.messages.push({text:'Vanclav '+parseInt(count)+1, id:parseInt(count)+1});
-		},
-		reverse: function(){
-			var oldMessages = this.messages;  
-			var part = this.messages.slice(1,5);
-			this.messages = part;
-			for(item in oldMessages) this.messages.push({id:oldMessages[item].id, text:oldMessages[item].text});		
-		},
 		/* Click right up context menu. Events. */
 		clickContextMenu(id){
 			if(id == 1){
@@ -67,7 +50,7 @@ var app = new Vue({
 				
 			}
 		},
-		/* Add new film or serial to data base */
+		/* Add new film or serial to data base 
 		saveMovie(){
 			app.enableAddMovieButton = true;
 			app.addMovieButtonName = "Ожидайте..";
@@ -95,7 +78,7 @@ var app = new Vue({
 				console.log(this.$refs);
 				app.enableAddMovieButton = false;
 			}
-		},
+		},*/
 		/* GET USER DATA FROM SQLITE */
 		checkLogin(){
 			try{				
@@ -103,9 +86,56 @@ var app = new Vue({
 					tx.executeSql('SELECT * FROM users', [], 
 					function(tx, result){
 						app.userData = result.rows[0];
+						app.getListFilm();
 					}, null);	
 				}, this.errorCB, null)	
 			}catch(ex){ console.log('AUTH ERROR: '+ex);	}			
+		},
+		/* GET LIST OF FILMS */
+		getListFilm(){
+			axios.get('http://quicknote.bget.ru/', {
+				params:{
+					id_user: this.userData.id,
+					action:'getListFilm'
+				}
+			}).then(response => {
+				let request = response.data;
+				console.log(request);
+				app.films = request.list;
+				this.htmlRequest = response.data.info;
+			}).catch(error => {					
+				console.log(error);
+			});
+		},
+		searchFilm(name){
+			console.log(name);
+			this.searchedFilms = [];
+			this.showCards = !this.showCards;
+			axios.get('http://quicknote.bget.ru/', {
+				params:{
+					key: name,
+					action:'getFilm'
+				}
+			}).then(response => {
+				this.searchedFilms = response.data;
+				this.filmsLoadingButton = "Назад";
+				console.log(response.data);
+				//this.htmlRequest = response.data.info;
+			}).catch(error => {					
+				console.log(error);
+			});
+		},
+		getDescriptionFilm(url){
+			axios.get('http://quicknote.bget.ru/', {
+				params:{
+					url: url,
+					action:'getDescription'
+				}
+			}).then(response => {
+				console.log(response.data);
+			}).catch(error => {					
+				console.log(error);
+			});			
 		}
 	},
 	

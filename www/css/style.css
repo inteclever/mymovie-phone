@@ -33,6 +33,10 @@
 .my-panel li{box-shadow: 0 0 2px rgba(0,0,0, .6); }
 
 .auth-request{display:block; text-align:center;}
+
+/* card style movieList.html */
+.v-card__text{text-align:center;}
+
 /* NEXT STYLE FOR OLD MENU */
 .menu{
 	height:100%;
