@@ -34,8 +34,9 @@ var app = new Vue({
 		htmlRequest: null,
 		showCards: true,
 		enableSearchMovieButton: false,
-		searchMovieButtonName: "Найти фильмм",
-		filmsLoadingButton: "Подождите, загружаю схожие фильмы..."
+		searchMovieButtonName: "Найти фильм",
+		filmsLoadingButton: "Подождите, загружаю схожие фильмы...",
+		description: ""
 	},
 	methods:{
 		/* Click right up context menu. Events. */
@@ -125,7 +126,7 @@ var app = new Vue({
 				console.log(error);
 			});
 		},
-		getDescriptionFilm(url){
+		getDescriptionFilm(url, idFilm){
 			axios.get('http://quicknote.bget.ru/', {
 				params:{
 					url: url,
@@ -133,6 +134,9 @@ var app = new Vue({
 				}
 			}).then(response => {
 				console.log(response.data);
+				//film_description = response.data.description;
+				//document.getElementById(idFilm).innerHTML = response.data.description;
+				this.searchedFilms[idFilm].description = response.data.description;
 			}).catch(error => {					
 				console.log(error);
 			});			

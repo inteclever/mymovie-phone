@@ -112,12 +112,13 @@
 							<div slot="header"><b>{{film.name}}</b> ({{film.date}})</div>
 							<v-card>
 								<v-card-text>
-									<div v-if="!film.film_info">
+									<div>
 										<form>
 											<img :src="film.imgSrc"/>
 											<div>Рейтинг: {{film.rating}}</div>
 											<div>Год выпуска: {{film.date}}</div>
-											<v-btn @click = "getDescriptionFilm(film.url)" > Описание </v-btn>
+											<div :id="i" v-html="film.description"></div>
+											<v-btn @click = "getDescriptionFilm(film.url, i)" > Описание </v-btn>
 											<v-btn @click = "" > Это он! </v-btn>
 										</form>
 									</div>
