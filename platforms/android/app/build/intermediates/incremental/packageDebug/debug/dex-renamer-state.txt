@@ -1,4 +1,4 @@
-#Sun Nov 11 23:02:05 KRAT 2018
+#Tue Nov 13 19:10:34 KRAT 2018
 base.0=D\:\\CordovaProjects\\mymovie\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex

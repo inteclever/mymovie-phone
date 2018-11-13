@@ -44,7 +44,7 @@
 								v-model="checkbox"
 								label="Запомнить меня"
 								v-if = "!retryPasswordFlag"
-								v-on:click.stop="autoauth = !autoauth"
+								v-on:change="autoauth = !autoauth"
 							></v-checkbox>
 							<v-btn
 								:disabled="!valid"

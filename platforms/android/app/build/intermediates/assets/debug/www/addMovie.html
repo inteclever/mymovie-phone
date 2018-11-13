@@ -22,13 +22,10 @@
 						class="my-menu"
 					>
 						<v-list class="pa-1">
-							<v-list-tile avatar>
-								<v-list-tile-avatar>
-									<img src="https://randomuser.me/api/portraits/men/85.jpg">
-								</v-list-tile-avatar>
+							<v-list-tile class="top-block-menu">
 
 								<v-list-tile-content>
-									<v-list-tile-title>Моифильмы.рф</v-list-tile-title>
+									<v-list-tile-title class="top-block-menu-text">Моифильмы.рф</v-list-tile-title>
 								</v-list-tile-content>
 							</v-list-tile>
 						</v-list>
@@ -40,13 +37,14 @@
 								key="item.id"
 								:href="item.href"
 								@click=""
+								class="menu-item"
 							>
 								<v-list-tile-action>
 									<v-icon>{{ item.icon }}</v-icon>
 								</v-list-tile-action>
 
 								<v-list-tile-content>
-									<v-list-tile-title>{{ item.name }}</v-list-tile-title>
+									<v-list-tile-title class="menu-item-text">{{ item.name }}</v-list-tile-title>
 								</v-list-tile-content>
 							</v-list-tile>
 						</v-list>
@@ -76,6 +74,8 @@
 					<!-- PLACE FOR ADDING OF CONTENT -->
 						<v-form  class="my-form" id="vaclav">
 							<v-text-field
+								:rules= "movieNameRule"
+								v-model="movieName"
 								label="Название фильмы / сериала"
 								required
 							></v-text-field>
@@ -87,9 +87,11 @@
 								v-model="typeMovieSelected"
 							></v-select>
 							<v-btn
-								@click="saveMovie();"
-							>Добавить
+								:disabled = "enableAddMovieButton"
+								@click="saveMovie"
+							>{{addMovieButtonName}}
 							</v-btn>
+							<span class="auth-request" v-html="htmlRequest"></span>
 						</v-form>	
 					
 					<!-- END PLACE FOR ADDING OF CONTENT -->

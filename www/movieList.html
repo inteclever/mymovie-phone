@@ -109,6 +109,8 @@
 						</v-expansion-panel>
 						
 						<!-- NEXT CARD LIST FOR SEARCHED FILMS --->
+						<div>
+						<center style="height:50px;" v-if = "!showCards">{{searchMessage}}</center>
 						<v-expansion-panel popout class="my-panel" v-if = "!showCards">
 						  <v-expansion-panel-content
 							v-for="(film, i) in searchedFilms"
@@ -117,14 +119,14 @@
 							<div slot="header"><b>{{film.name}}</b> ({{film.date}})</div>
 							<v-card>
 								<v-card-text>
-									<div>
+									<div :id="'textfilm-'+i">
 										<form>
 											<img :src="film.imgSrc"/>
 											<div>Рейтинг: {{film.rating}}</div>
 											<div>Год выпуска: {{film.date}}</div>
 											<div :id="i" v-html="film.description"></div>
-											<v-btn @click = "getDescriptionFilm(film.url, i)" > Описание </v-btn>
-											<v-btn @click = "bindMovie(film)" > Это он! </v-btn>
+											<v-btn :id="'describe-'+i" @click = "getDescriptionFilm(film.url, i)" > Описание </v-btn>
+											<v-btn @click = "bindMovie(film, i)" > Это он! </v-btn>
 										</form>
 									</div>
 								</v-card-text>
@@ -134,6 +136,7 @@
 								{{filmsLoadingButton}}
 							</v-btn>
 						</v-expansion-panel>
+						</div>
 					</v-layout>
 				</v-app>
 			</template>
