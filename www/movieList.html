@@ -22,13 +22,10 @@
 						width=250
 					>
 						<v-list class="pa-1">
-							<v-list-tile avatar>
-								<v-list-tile-avatar>
-									<img src="https://randomuser.me/api/portraits/men/85.jpg">
-								</v-list-tile-avatar>
+							<v-list-tile class="top-block-menu">
 
 								<v-list-tile-content>
-									<v-list-tile-title>Моифильмы.рф</v-list-tile-title>
+									<v-list-tile-title class="top-block-menu-text">Моифильмы.рф</v-list-tile-title>
 								</v-list-tile-content>
 							</v-list-tile>
 						</v-list>
@@ -40,13 +37,14 @@
 								key="item.id"
 								:href="item.href"
 								@click=""
+								class="menu-item"
 							>
 								<v-list-tile-action>
 									<v-icon>{{ item.icon }}</v-icon>
 								</v-list-tile-action>
 
 								<v-list-tile-content>
-									<v-list-tile-title>{{ item.name }}</v-list-tile-title>
+									<v-list-tile-title class="menu-item-text">{{ item.name }}</v-list-tile-title>
 								</v-list-tile-content>
 							</v-list-tile>
 						</v-list>
@@ -77,8 +75,9 @@
 						  <v-expansion-panel-content
 							v-for="(film, i) in films"
 							:key="i"
+							:class="(film.seen != 0)?'seen':null" 
 						  >
-							<div slot="header"><b>{{film.name}}</b> ({{film.date}})</div>
+							<div slot="header" ><b>{{film.name}}</b> ({{film.date}})</div>
 							<v-card>
 								<v-card-text>
 									<div v-if="!film.film_info">
@@ -90,14 +89,20 @@
 												:value="film.name"
 												required
 											></v-text-field>
-											<v-btn
-												id = "film.name"
-												@click = "searchFilm(film.name)"
-											>
+											<v-btn id = "film.name" @click = "searchFilm(film.name, film.id)" >
 												{{searchMovieButtonName}}
 											</v-btn>
 										</form>
 									</div>
+																
+									<div v-if="film.film_info">
+										<img :src="film.film_info.img"/>
+										<div v-if="film.film_info.rating = (film.film_info.rating == 0)?'Нету':film.film_info.rating">Рейтинг: <b>{{film.film_info.rating}}</b></div>
+										<div>Год выпуска: <b>{{film.film_info.date}}</b></div>
+										<div :id="i" v-html="film.film_info.about"></div>
+									</div>
+									<v-btn v-if="film.seen == 0" @click = "seenMovie(film.id, i)" class="seen">Посмотрел фильм</v-btn>
+									<button class="delete-movie-btn" @click = "deleteFromList(film.id, i)"><v-icon>delete</v-icon></button>
 								</v-card-text>
 							</v-card>
 						  </v-expansion-panel-content>
@@ -119,7 +124,7 @@
 											<div>Год выпуска: {{film.date}}</div>
 											<div :id="i" v-html="film.description"></div>
 											<v-btn @click = "getDescriptionFilm(film.url, i)" > Описание </v-btn>
-											<v-btn @click = "" > Это он! </v-btn>
+											<v-btn @click = "bindMovie(film)" > Это он! </v-btn>
 										</form>
 									</div>
 								</v-card-text>

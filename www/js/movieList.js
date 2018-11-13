@@ -30,13 +30,15 @@ var app = new Vue({
 		/* container for film list of user*/
 		films:[],
 		searchedFilms:[],
+		selectedSearchFilm: null,
 		menuItem_class:'menu-item',
 		htmlRequest: null,
 		showCards: true,
 		enableSearchMovieButton: false,
 		searchMovieButtonName: "Найти фильм",
 		filmsLoadingButton: "Подождите, загружаю схожие фильмы...",
-		description: ""
+		description: "",
+		seenStyle: null
 	},
 	methods:{
 		/* Click right up context menu. Events. */
@@ -51,35 +53,24 @@ var app = new Vue({
 				
 			}
 		},
-		/* Add new film or serial to data base 
-		saveMovie(){
-			app.enableAddMovieButton = true;
-			app.addMovieButtonName = "Ожидайте..";
-			if (this.typeMovieSelected && this.movieName) {
-				// Native form submission is not yet supported
-				axios.get('http://quicknote.bget.ru/', {
-					params:{
-						id_user: this.userData.id,
-						id_type: this.typeMovieSelected,
-						movie_name: this.movieName,
-						action:'addMovie'
-					}
-				}).then(response => {
-					console.log(response);
-					let request = response.data;
-					this.htmlRequest = response.data.info;
-					app.enableAddMovieButton = false;
-					app.addMovieButtonName = "Добавить";
-				}).catch(error => {					
-					console.log(error);
-					app.enableAddMovieButton = false;
-					app.addMovieButtonName = "Добавить";
-				});
-			}else{
-				console.log(this.$refs);
-				app.enableAddMovieButton = false;
-			}
-		},*/
+		/* DELETE MOVIE FROM DATA BASE */
+		deleteFromList(id, counter){
+			console.log(`id film: ${id} id user ${this.userData.id} counter: ${counter}`);
+			axios.get('http://quicknote.bget.ru/', {
+				params:{
+					id_film: id,
+					id_user: this.userData.id,
+					action:'deleteFilm'
+				}
+			}).then(response => {
+				
+				let request = response.data;
+				if(request.status) this.films.splice(counter, 1);
+				
+			}).catch(error => {					
+				console.log(error);
+			});
+		},
 		/* GET USER DATA FROM SQLITE */
 		checkLogin(){
 			try{				
@@ -101,15 +92,13 @@ var app = new Vue({
 				}
 			}).then(response => {
 				let request = response.data;
-				console.log(request);
 				app.films = request.list;
 				this.htmlRequest = response.data.info;
 			}).catch(error => {					
 				console.log(error);
 			});
 		},
-		searchFilm(name){
-			console.log(name);
+		searchFilm(name, id_film){
 			this.searchedFilms = [];
 			this.showCards = !this.showCards;
 			axios.get('http://quicknote.bget.ru/', {
@@ -120,8 +109,29 @@ var app = new Vue({
 			}).then(response => {
 				this.searchedFilms = response.data;
 				this.filmsLoadingButton = "Назад";
-				console.log(response.data);
-				//this.htmlRequest = response.data.info;
+				this.selectedSearchFilm = id_film;
+			}).catch(error => {					
+				console.log(error);
+			});
+		},
+		bindMovie(film){
+			axios.get('http://quicknote.bget.ru/', {
+				params:{
+					id_user: this.userData.id,
+					id_film: this.selectedSearchFilm,
+					description: film.description,
+					kp_id: film.id,
+					img: film.imgSrc,
+					name: film.name,
+					rating: film.rating,
+					url: film.url,
+					date: film.date,
+					action:'bindMovie'
+				}
+			}).then(response => {
+				let request = response.data;
+				app.films = request.list;
+				this.htmlRequest = response.data.info;
 			}).catch(error => {					
 				console.log(error);
 			});
@@ -140,6 +150,22 @@ var app = new Vue({
 			}).catch(error => {					
 				console.log(error);
 			});			
+		},
+		seenMovie(id_film, counter){
+			console.log(`id film: ${id_film} id user ${this.userData.id} counter: ${counter}`);
+			axios.get('http://quicknote.bget.ru/', {
+				params:{
+					id_film: id_film,
+					id_user: this.userData.id,
+					action:'seenFilm'
+				}
+			}).then(response => {				
+				let request = response.data;
+				if(request.status) this.films[counter].seen = 1;
+				
+			}).catch(error => {					
+				console.log(error);
+			});
 		}
 	},
 	
