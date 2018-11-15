@@ -103,6 +103,12 @@
 									</div>
 									<v-btn v-if="film.seen == 0" @click = "seenMovie(film.id, i)" class="seen">Посмотрел фильм</v-btn>
 									<button class="delete-movie-btn" @click = "deleteFromList(film.id, i)"><v-icon>delete</v-icon></button>
+									<button  class="share-movie-btn" @click.stop.prevent = "shareMovie(film.token)">
+										<v-tooltip top>
+											<v-icon slot="activator">share</v-icon>
+											<span>{{copyMessage}}</span>
+										<v-tooltip top>
+									</button>
 								</v-card-text>
 							</v-card>
 						  </v-expansion-panel-content>
@@ -140,6 +146,7 @@
 					</v-layout>
 				</v-app>
 			</template>
+						<input type="hidden" id="testing-code" >
 		</div>
 	</body>
 	

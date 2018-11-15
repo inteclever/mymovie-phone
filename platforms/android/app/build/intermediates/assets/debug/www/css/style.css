@@ -40,6 +40,7 @@
 /* card style movieList.html */
 .v-card__text{text-align:center;}
 .delete-movie-btn{position: absolute; right: 5px; bottom: 5px;}
+.share-movie-btn{position: absolute; left: 5px; bottom: 5px;}
 
 /* NEXT STYLE FOR OLD MENU */
 .menu{

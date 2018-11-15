@@ -39,7 +39,9 @@ var app = new Vue({
 		filmsLoadingButton: "Подождите, загружаю схожие фильмы...",
 		searchMessage: "Список найденых фильмов",
 		description: "",
-		seenStyle: null
+		seenStyle: null,
+		toBufferClipBoard: null,
+		copyMessage: "Нажмите, что б скопировать ссылку в буфер обмена"
 	},
 	methods:{
 		/* Click right up context menu. Events. */
@@ -172,7 +174,26 @@ var app = new Vue({
 			}).catch(error => {					
 				console.log(error);
 			});
-		}
+		},
+		shareMovie(token) {
+			this.toBufferClipBoard = "http://quicknote.bget.ru/?action=showFilmInfo&token="+token;
+			let testingCodeToCopy = document.querySelector('#testing-code');
+			testingCodeToCopy.value = this.toBufferClipBoard;
+			testingCodeToCopy.setAttribute('type', 'text');
+			testingCodeToCopy.select();
+
+			try {
+				var successful = document.execCommand('copy');
+				this.copyMessage = "Ссылка на фильм скопирована в буфер обмена";
+			} catch (err) {
+				this.copyMessage = "При копировании сылки произошла ошибка, попробуйте еще раз!";
+			}
+
+			/* unselect the range */
+			testingCodeToCopy.setAttribute('type', 'hidden');
+			window.getSelection().removeAllRanges();
+			
+        }
 	},
 	
 	computed: {
