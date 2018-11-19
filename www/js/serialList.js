@@ -17,6 +17,7 @@ var app = new Vue({
 	data: {
 		db: window.openDatabase("Database", "1.0", "mymoviedb", 200000),
 		userData: {},
+		onlyNumbers: [v => (v && v.length > 0 && v.length <= 3) || 'Введите название фильма'],
 		menuEnable: null, // close or open main menu
 		menu:[
 			{name:'Добавить фльм', id:1, icon:'add_circle_outline', href:'addMovie.html'},
@@ -27,6 +28,17 @@ var app = new Vue({
 			{name:'Выйти', id:1},
 			{name:'Закрыть', id:2}
 		],
+		weekDays:[
+			{name:"Понедельник", tzName:"Monday", id:1, today:false},
+			{name:"Вторник", tzName:"Tuesday", id:2, today:false},
+			{name:"Среда", tzName:"Wednesday", id:3, today:false},
+			{name:"Четверг", tzName:"Thursday", id:4, today:false},
+			{name:"Пятница", tzName:"Friday", id:5, today:false},
+			{name:"Суббота", tzName:"Saturday", id:6, today:false},
+			{name:"Воскресенье", tzName:"Sunday", id:7, today:false}
+		],
+		weekDaysSelected:null, 
+		manySeries:null,
 		/* container for film list of user*/
 		films:[],
 		searchedFilms:[],
@@ -44,6 +56,39 @@ var app = new Vue({
 		copyMessage: "Нажмите, что б скопировать ссылку в буфер обмена"
 	},
 	methods:{
+		saveSeries(id){
+			var countSeries = this.manySeries;
+			var published = null;
+			app.weekDays.forEach(function(key, iteration){
+				if(key.id == app.weekDaysSelected){
+					published  =  key.name;
+					return false;
+				}
+			});
+			if(countSeries && published){
+				axios.get('http://quicknote.bget.ru/', {
+					params:{
+						id_film: id,
+						id_user: this.userData.id,
+						pubDay: published,
+						countSeries: countSeries,
+						action:'insertSeries'
+					}
+				}).then(response => {
+					
+					let request = response.data;
+					console.log(request);
+					
+				}).catch(error => {					
+					console.log(error);
+				});
+			}
+		},
+		getToday(){
+			var date = new Date();
+			this.weekDays[parseInt(date.getDay()) - parseInt(1)].today = true;
+			this.weekDaysSelected = this.weekDays[parseInt(date.getDay()) - parseInt(1)].id;
+		},
 		/* Click right up context menu. Events. */
 		clickContextMenu(id){
 			if(id == 1){
@@ -58,7 +103,6 @@ var app = new Vue({
 		},
 		/* DELETE MOVIE FROM DATA BASE */
 		deleteFromList(id, counter){
-			console.log(`id film: ${id} id user ${this.userData.id} counter: ${counter}`);
 			axios.get('http://quicknote.bget.ru/', {
 				params:{
 					id_film: id,
@@ -91,7 +135,8 @@ var app = new Vue({
 			axios.get('http://quicknote.bget.ru/', {
 				params:{
 					id_user: this.userData.id,
-					action:'getListFilm'
+					type: "serial",
+					action: 'getListFilm'
 				}
 			}).then(response => {
 				let request = response.data;
@@ -176,7 +221,7 @@ var app = new Vue({
 			});
 		},
 		shareMovie(token) {
-			this.toBufferClipBoard = "https://quicknote.bget.ru/?action=showFilmInfo&token="+token;
+			this.toBufferClipBoard = "http2://quicknote.bget.ru/?action=showFilmInfo&token="+token;
 			let testingCodeToCopy = document.querySelector('#testing-code');
 			testingCodeToCopy.value = this.toBufferClipBoard;
 			testingCodeToCopy.setAttribute('type', 'text');
@@ -199,6 +244,7 @@ var app = new Vue({
 	computed: {
     },
     mounted() {
-		this.checkLogin()
+		this.checkLogin();
+		this.getToday();
     }
 })

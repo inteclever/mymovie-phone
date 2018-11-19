@@ -72,7 +72,7 @@
 					<!-- End toolbar -->
 					<v-layout row wrap align center justify-center>
 						<v-expansion-panel popout  v-if = "showCards">
-						  <v-expansion-panel-content
+						  <v-expansion-panel-content 
 							class="my-panel"
 							v-for="(film, i) in films"
 							:key="i"
@@ -102,7 +102,32 @@
 										<div>Год выпуска: <b>{{film.film_info.date}}</b></div>
 										<div :id="i" v-html="film.film_info.about"></div>
 									</div>
-									<v-btn v-if="film.seen == 0" @click = "seenMovie(film.id, i)" class="seen">Посмотрел фильм</v-btn>
+									<v-btn v-if="film.seen == 0" @click = "seenMovie(film.id, i)" class="seen">Посмотрел сериал</v-btn>
+									
+									<div class="check-series" v-if="film.series">
+										<v-chip label v-for="seria in film.series" @click="seenSeries(film.id, film.series.id)">{{i}}</v-chip>
+										<v-chip label @click="clloseSeason(film.id)">Сезон закрыт</v-chip>
+									</div>
+									<div class="serial-settings" v-if="!film.series">
+									<v-form>
+										<v-select 
+											label="В какой день выходят серии?" 
+											:items="weekDays"
+											item-text="name"
+											item-value="id"
+											v-model = "weekDaysSelected"
+										></v-select>
+										<v-text-field
+											width=50
+											label="На какой сейчас серии?"
+											type="number"
+											:rules="onlyNumbers"
+											v-model="manySeries"											
+											required
+										></v-text-field>
+										<v-btn @click = "saveSeries(film.id)" >Сохранить</v-btn>
+									</v-form>
+									</div>
 									<button class="delete-movie-btn" @click = "deleteFromList(film.id, i)"><v-icon>delete</v-icon></button>
 									<button  class="share-movie-btn" @click.stop.prevent = "shareMovie(film.token)">
 										<v-tooltip top>
@@ -151,23 +176,9 @@
 		</div>
 	</body>
 	
-	<!-- OLD MENU 	
-	  <div v-bind:class="menu_class" v-if="menu_enable">
-		<div class="close-menu" v-on:click="menu_enable = false;">
-			<span></span>
-		</div>
-		<menu-items 
-			v-for="item in menu"
-			v-bind:key = "item.id"
-			v-bind:id="item.id"
-			v-bind:name="item.name"
-			v-bind:class="menuItem_class">					
-		</menu-items>
-	  </div>
-	END OLD MENU -->
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.js"></script>
 	<script src="js/axios.min.js"></script>
-	<script src="js/movieList.js"></script>
+	<script src="js/serialList.js"></script>
 </html>
