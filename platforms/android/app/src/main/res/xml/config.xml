@@ -4,12 +4,13 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <icon density="mdpi" height="57" platform="android" src="res/applogo/icon.png" width="57" />
     <name>Моифильмы</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+       Больше ты не забудешь, что хотел посмотреть вечером!
     </description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+        Inteclever
     </author>
     <content src="index.html" />
     <access origin="*" />

@@ -31,16 +31,21 @@
 .menu-item-text{ font-size:1.2em !important; }
 /* END NEW MENU STYLES */
 
-.my-panel{ height: 50px; margin-bottom: 10px;}
-.my-panel li{ box-shadow: 0 0 20px rgba(0,0,0, .2); margin-bottom: 10px;  border-radius: 3px; }
-.seen{background-color:#63a4ff !important; color:#fff !important;}
-
 .auth-request{display:block; text-align:center;}
 
-/* card style movieList.html */
+/* card style movieList.html and serial list*/
 .v-card__text{text-align:center;}
 .delete-movie-btn{position: absolute; right: 5px; bottom: 5px;}
 .share-movie-btn{position: absolute; left: 5px; bottom: 5px;}
+
+.my-panel{ margin-bottom: 10px; }
+.my-panel li{ box-shadow: 0 0 20px rgba(0,0,0, .2); margin-bottom: 10px;  border-radius: 3px; }
+.card-header{height:55px; background-color:#fff;}
+.seen{background-color:#63a4ff !important; color:#fff !important;}
+.new-seria{background-color:#388e3c !important; font-size:1em !important; color:#fff !important;}
+.delete-seria{background-color:#d32f2f !important; font-size:1em !important; color:#fff !important;}
+.close-season, .check-series{margin-top:20px;}
+
 
 /* NEXT STYLE FOR OLD MENU */
 .menu{
