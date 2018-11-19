@@ -105,8 +105,17 @@
 									<v-btn v-if="film.seen == 0" @click = "seenMovie(film.id, i)" class="seen">Посмотрел сериал</v-btn>
 									
 									<div class="check-series" v-if="film.series">
-										<v-chip label v-for="seria in film.series" @click="seenSeries(film.id, film.series.id)">{{i}}</v-chip>
-										<v-chip label @click="clloseSeason(film.id)">Сезон закрыт</v-chip>
+										<v-chip
+											label  
+											v-for="(seria,  j) in film.series" 
+											@click="seenSeries(film.id, seria.id, seria.seen, i, j)"
+											:class="(seria.seen != 0)?'seen':null"
+										>{{j+1}}</v-chip>
+										<v-chip label @click="correctSeria(film.id, film.series.length, i, 'new')" class="new-seria">+</v-chip>
+										<v-chip label @click="correctSeria(film.id, film.series.length, i, 'del')" class="delete-seria">-</v-chip>
+										<div class="close-season">
+											<v-chip label @click="closeSeason(film.id)">Сезон закрыт</v-chip>
+										</div>
 									</div>
 									<div class="serial-settings" v-if="!film.series">
 									<v-form>

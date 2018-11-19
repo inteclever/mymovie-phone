@@ -72,7 +72,7 @@ var app = new Vue({
 						id_user: this.userData.id,
 						pubDay: published,
 						countSeries: countSeries,
-						action:'insertSeries'
+						action:'bindSeries'
 					}
 				}).then(response => {
 					
@@ -83,6 +83,51 @@ var app = new Vue({
 					console.log(error);
 				});
 			}
+		},
+		seenSeries(id_film, id_seria, seen, iteration, seriaIteration){
+			axios.get('http://quicknote.bget.ru/', {
+				params:{
+					id_film: id_film,
+					id_seria: id_seria,
+					seen: seen,
+					action:'seenSeries'
+				}
+			}).then(response => {
+				
+				let request = response.data;
+				console.log(request);
+				seen = (seen == 0)?1:0;
+				this.films[iteration].series[seriaIteration].seen = seen;
+				
+			}).catch(error => {					
+				console.log(error);
+			});
+		},
+		correctSeria(id_film, seriesLength, iteration, operation){
+			var publishDay = this.films[iteration].series[seriesLength-1].date_publishion;
+			var idSeria = this.films[iteration].series[seriesLength-1].id;
+			axios.get('http://quicknote.bget.ru/', {
+				params:{
+					id_film: id_film,
+					length: seriesLength,
+					publish: publishDay,
+					operation: operation,
+					id_seria: idSeria,
+					action: 'newSeria'
+				}
+			}).then(response => {
+				
+				let request = response.data;
+				console.log(request);
+				if(operation == "new"){
+					this.films[iteration].series =  [...this.films[iteration].series, request.seria];
+				}else{
+					this.films[iteration].series.splice(seriesLength-1, 1);
+				}
+				
+			}).catch(error => {					
+				console.log(error);
+			});
 		},
 		getToday(){
 			var date = new Date();
