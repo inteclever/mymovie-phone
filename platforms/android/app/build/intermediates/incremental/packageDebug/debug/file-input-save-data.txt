@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Nov 19 22:00:46 KRAT 2018
+#Mon Nov 19 22:43:39 KRAT 2018
 17.baseType=DIRECTORY
 4.path=www/plugins/cordova-sqlite-storage/www/SQLitePlugin.js
 22.set=ASSET

@@ -24,7 +24,7 @@
 
 /* NEW MENU STYLES */
 
-.my-menu{width:220px;}
+.my-menu{width:220px; height:500px;}
 .my-toolbar{margin-bottom:10px;}
 .top-block-menu{align-items: center; display: flex; justify-content: center; padding:10px;}
 .top-block-menu-text{font-size:1.7em; font-weight: 600; color:#1976d2;}

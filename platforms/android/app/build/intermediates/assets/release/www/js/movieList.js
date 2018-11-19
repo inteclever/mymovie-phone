@@ -21,7 +21,7 @@ var app = new Vue({
 		menu:[
 			{name:'Добавить фльм', id:1, icon:'add_circle_outline', href:'addMovie.html'},
 			{name:'Мои фильмы', id:2, icon:'ondemand_video', href:'movieList.html'},
-			{name:'Мои сериалы', id:3, icon:'personal_video', href:'movieList.html'}
+			{name:'Мои сериалы', id:3, icon:'personal_video', href:'serialList.html'}
 		],
 		menuContext:[
 			{name:'Выйти', id:1},
@@ -176,7 +176,7 @@ var app = new Vue({
 			});
 		},
 		shareMovie(token) {
-			this.toBufferClipBoard = "http://whatsee.ru/?action=showFilmInfo&token="+token;
+			this.toBufferClipBoard = "https://quicknote.bget.ru/?action=showFilmInfo&token="+token;
 			let testingCodeToCopy = document.querySelector('#testing-code');
 			testingCodeToCopy.value = this.toBufferClipBoard;
 			testingCodeToCopy.setAttribute('type', 'text');

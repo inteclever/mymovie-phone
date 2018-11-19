@@ -267,7 +267,7 @@ var app = new Vue({
 			});
 		},
 		shareMovie(token) {
-			this.toBufferClipBoard = "http2://quicknote.bget.ru/?action=showFilmInfo&token="+token;
+			this.toBufferClipBoard = "https://quicknote.bget.ru/?action=showFilmInfo&token="+token;
 			let testingCodeToCopy = document.querySelector('#testing-code');
 			testingCodeToCopy.value = this.toBufferClipBoard;
 			testingCodeToCopy.setAttribute('type', 'text');

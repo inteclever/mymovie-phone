@@ -17,7 +17,7 @@
 					<!--  Start menu block -->
 					<v-navigation-drawer
 						v-model="menuEnable"
-						absolute
+						fixed
 						temporary
 						class="my-menu"
 					>
@@ -25,7 +25,7 @@
 							<v-list-tile class="top-block-menu">
 
 								<v-list-tile-content>
-									<v-list-tile-title class="top-block-menu-text">Моифильмы.рф</v-list-tile-title>
+									<v-list-tile-title class="top-block-menu-text">whatsee</v-list-tile-title>
 								</v-list-tile-content>
 							</v-list-tile>
 						</v-list>
@@ -53,7 +53,7 @@
 					<!-- Toolbar -->
 					<v-toolbar dark color="primary" class="my-toolbar">
 						<v-toolbar-side-icon v-on:click.stop="menuEnable = !menuEnable"></v-toolbar-side-icon>
-						<v-toolbar-title class="white--text">мофильмы.рф</v-toolbar-title>
+						<v-toolbar-title class="white--text">Добавить</v-toolbar-title>
 						<v-spacer></v-spacer>
 						<v-menu offset-y>
 							<v-btn icon slot="activator" color="primary" dark>
