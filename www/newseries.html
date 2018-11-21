@@ -1,0 +1,108 @@
+﻿<html>
+	<head>
+		<title>
+			Vue JS
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+	</head>
+	<body>
+		<div class="movieContainer" >
+			<template>
+				<v-app>
+					<!--  Start menu block -->
+					<v-navigation-drawer
+						v-model="menuEnable"
+						fixed
+						temporary
+						width=250
+					>
+						<v-list class="pa-1">
+							<v-list-tile class="top-block-menu">
+
+								<v-list-tile-content>
+									<v-list-tile-title class="top-block-menu-text">whatsee</v-list-tile-title>
+								</v-list-tile-content>
+							</v-list-tile>
+						</v-list>
+						<v-list class="pt-0" dense>
+							<v-divider></v-divider>
+
+							<v-list-tile
+								v-for="item in menu"
+								key="item.id"
+								:href="item.href"
+								@click=""
+								class="menu-item"
+							>
+								<v-list-tile-action>
+									<v-icon>{{ item.icon }}</v-icon>
+								</v-list-tile-action>
+
+								<v-list-tile-content>
+									<v-list-tile-title class="menu-item-text">{{ item.name }}</v-list-tile-title>
+								</v-list-tile-content>
+							</v-list-tile>
+						</v-list>
+					</v-navigation-drawer>
+					<!-- end menu block -->
+					<!-- Toolbar -->
+					<v-toolbar dark color="primary" class="my-toolbar">
+						<v-toolbar-side-icon v-on:click.stop="menuEnable = !menuEnable"></v-toolbar-side-icon>
+						<v-toolbar-title class="white--text">Календарь серий</v-toolbar-title>
+						<v-spacer></v-spacer>
+						<v-menu offset-y>
+							<v-btn icon slot="activator" color="primary" dark>
+								<v-icon>more_vert</v-icon>
+							</v-btn>
+							<v-list>
+								<v-list-tile
+									v-for="(item, index) in menuContext"
+									:key="item.id"
+									@click="">
+									<v-list-tile-title>{{ item.name }}</v-list-tile-title>
+								</v-list-tile>
+							</v-list>
+						</v-menu>
+					</v-toolbar>
+					<!-- End toolbar -->
+						<v-expansion-panel>
+							<v-expansion-panel-content
+								v-for="(day, i) in weekDays"
+								:key="i"
+								class="new-series-panel"
+							>
+								<div slot="header" v-html="(day.name == weekDaysSelected)?'<b>Сегодня</b>':day.name"></div>
+								<v-card>
+									<v-card-text>
+										  <v-data-table
+											:headers="headers"
+											:items="films"
+											class="elevation-1"
+										  >
+											<template slot="items" slot-scope="props" v-if="day.name == props.item.series[0].date_publishion">
+											  <td><b>{{ props.item.name }}</b></td>
+											  <td class="text-xs-center">{{ props.item.series[props.item.series.length-1].date_seen}}</td>
+											  <td class="text-xs-center">{{props.item.series.length}}</td>
+											</template>
+										  </v-data-table>
+									</v-card-text>
+								</v-card>
+							</v-expansion-panel-content>						
+						</v-expansion-panel>
+				</v-app>
+			</template>
+			<input type="hidden" id="testing-code" >
+		</div>
+	</body>
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.js"></script>
+	<script src="js/axios.min.js"></script>
+	<script src="js/newseries.js"></script>
+</html>

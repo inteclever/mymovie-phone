@@ -39,6 +39,11 @@ var app = new Vue({
 			{name:"Суббота", tzName:"Saturday", id:6, today:false},
 			{name:"Воскресенье", tzName:"Sunday", id:7, today:false}
 		],
+		headers: [
+			{text: 'Название', value: 'name'},
+			{text: 'Дата послед. просмотра', value: 'date', align:'center' },
+			{text: 'Просмотрено', value: 'count', align:'center'}
+		],
 		weekDaysSelected:null, 
 		manySeries:null,
 		/* container for film list of user*/
@@ -55,87 +60,12 @@ var app = new Vue({
 		description: "",
 		seenStyle: null,
 		toBufferClipBoard: null,
-		copyMessage: "Нажмите, что б скопировать ссылку в буфер обмена"
 	},
 	methods:{
-		saveSeries(id, iteration){
-			var countSeries = this.manySeries;
-			var published = null;
-			app.weekDays.forEach(function(key, iteration){
-				if(key.id == app.weekDaysSelected){
-					published  =  key.name;
-					return false;
-				}
-			});
-			if(countSeries && published){
-				axios.get('http://quicknote.bget.ru/', {
-					params:{
-						id_film: id,
-						id_user: this.userData.id,
-						pubDay: published,
-						countSeries: countSeries,
-						action:'bindSeries'
-					}
-				}).then(response => {
-					
-					let request = response.data;
-					this.films[iteration].series = request.series;
-					console.log(request);
-					
-				}).catch(error => {					
-					console.log(error);
-				});
-			}
-		},
-		seenSeries(id_film, id_seria, seen, iteration, seriaIteration){
-			axios.get('http://quicknote.bget.ru/', {
-				params:{
-					id_film: id_film,
-					id_seria: id_seria,
-					seen: seen,
-					action:'seenSeries'
-				}
-			}).then(response => {
-				
-				let request = response.data;
-				console.log(request);
-				seen = (seen == 0)?1:0;
-				this.films[iteration].series[seriaIteration].seen = seen;
-				
-			}).catch(error => {					
-				console.log(error);
-			});
-		},
-		correctSeria(id_film, seriesLength, iteration, operation){
-			var publishDay = this.films[iteration].series[seriesLength-1].date_publishion;
-			var idSeria = this.films[iteration].series[seriesLength-1].id;
-			axios.get('http://quicknote.bget.ru/', {
-				params:{
-					id_film: id_film,
-					length: seriesLength,
-					publish: publishDay,
-					operation: operation,
-					id_seria: idSeria,
-					action: 'newSeria'
-				}
-			}).then(response => {
-				
-				let request = response.data;
-				console.log(request);
-				if(operation == "new"){
-					this.films[iteration].series =  [...this.films[iteration].series, request.seria];
-				}else{
-					this.films[iteration].series.splice(seriesLength-1, 1);
-				}
-				
-			}).catch(error => {					
-				console.log(error);
-			});
-		},
 		getToday(){
 			var date = new Date();
 			this.weekDays[parseInt(date.getDay()) - parseInt(1)].today = true;
-			this.weekDaysSelected = this.weekDays[parseInt(date.getDay()) - parseInt(1)].id;
+			this.weekDaysSelected = this.weekDays[parseInt(date.getDay()) - parseInt(1)].name;
 		},
 		/* Click right up context menu. Events. */
 		clickContextMenu(id){
