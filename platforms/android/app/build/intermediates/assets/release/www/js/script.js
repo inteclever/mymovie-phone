@@ -24,9 +24,11 @@ var app = new Vue({
 			{name:'Сериал', id:2}
 		],
 		menu:[
-			{name:'Добавить фльм', id:1, icon:'add_circle_outline', href:'addMovie.html'},
+			{name:'Добавить', id:1, icon:'add_circle_outline', href:'addMovie.html'},
 			{name:'Мои фильмы', id:2, icon:'ondemand_video', href:'movieList.html'},
-			{name:'Мои сериалы', id:3, icon:'personal_video', href:'serialList.html'}
+			{name:'Мои сериалы', id:3, icon:'personal_video', href:'serialList.html'},
+			{name:'Как пользоваться', id:4, icon:'list', href:'howtouse.html'},
+			{name:'Новые серии', id:5, icon:'priority_high', href:'newseries.html'}
 		],
 		menuContext:[
 			{name:'Выйти', id:1},

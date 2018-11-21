@@ -20,9 +20,11 @@ var app = new Vue({
 		onlyNumbers: [v => (v && v.length > 0 && v.length <= 3) || 'Введите название фильма'],
 		menuEnable: null, // close or open main menu
 		menu:[
-			{name:'Добавить фльм', id:1, icon:'add_circle_outline', href:'addMovie.html'},
+			{name:'Добавить', id:1, icon:'add_circle_outline', href:'addMovie.html'},
 			{name:'Мои фильмы', id:2, icon:'ondemand_video', href:'movieList.html'},
-			{name:'Мои сериалы', id:3, icon:'personal_video', href:'serialList.html'}
+			{name:'Мои сериалы', id:3, icon:'personal_video', href:'serialList.html'},
+			{name:'Как пользоваться', id:4, icon:'list', href:'howtouse.html'},
+			{name:'Новые серии', id:5, icon:'priority_high', href:'newseries.html'}
 		],
 		menuContext:[
 			{name:'Выйти', id:1},
@@ -47,7 +49,7 @@ var app = new Vue({
 		htmlRequest: null,
 		showCards: true,
 		enableSearchMovieButton: false,
-		searchMovieButtonName: "Найти фильм",
+		searchMovieButtonName: "Найти сериал",
 		filmsLoadingButton: "Подождите, загружаю схожие фильмы...",
 		searchMessage: "Список найденых фильмов",
 		description: "",
@@ -194,7 +196,6 @@ var app = new Vue({
 		},
 		searchFilm(name, id_film){
 			this.searchedFilms = [];
-			this.searchMessage = null;
 			this.showCards = !this.showCards;
 			axios.get('http://quicknote.bget.ru/', {
 				params:{
@@ -267,7 +268,7 @@ var app = new Vue({
 			});
 		},
 		shareMovie(token) {
-			this.toBufferClipBoard = "https://quicknote.bget.ru/?action=showFilmInfo&token="+token;
+			this.toBufferClipBoard = "https://whatsee.ru/?action=showFilmInfo&token="+token;
 			let testingCodeToCopy = document.querySelector('#testing-code');
 			testingCodeToCopy.value = this.toBufferClipBoard;
 			testingCodeToCopy.setAttribute('type', 'text');

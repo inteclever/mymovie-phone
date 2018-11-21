@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="c91ac926-663a-44a1-aa24-d88638ad261b" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,112 +30,27 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider editor-type-id="android-manifest">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="1" column="71" lean-forward="false" selection-start-line="1" selection-start-column="71" selection-end-line="1" selection-end-column="71" />
+              <caret line="1" column="99" lean-forward="false" selection-start-line="1" selection-start-column="99" selection-end-line="1" selection-end-column="99" />
               <folding>
-                <element signature="e#581#599#0" expanded="true" />
-                <element signature="e#738#761#0" expanded="true" />
-                <element signature="e#969#992#0" expanded="true" />
+                <element signature="e#586#604#0" expanded="true" />
+                <element signature="e#743#766#0" expanded="true" />
+                <element signature="e#974#997#0" expanded="true" />
               </folding>
             </state>
-          </provider>
-          <provider editor-type-id="android-manifest">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="serialList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/assets/www/js/serialList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="269" column="43" lean-forward="false" selection-start-line="269" selection-start-column="43" selection-end-line="269" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="movieList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/assets/www/js/movieList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="178" column="52" lean-forward="false" selection-start-line="178" selection-start-column="52" selection-end-line="178" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addMovie.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/assets/www/addMovie.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="19" column="29" lean-forward="false" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="icon.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/icon.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/assets/www/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="26" column="35" lean-forward="false" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/assets/www/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-646">
-              <caret line="7" column="29" lean-forward="false" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="movieList.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/assets/www/movieList.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="27" column="90" lean-forward="false" selection-start-line="27" selection-start-column="90" selection-end-line="27" selection-end-column="90" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="serialList.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/assets/www/serialList.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="21" column="33" lean-forward="false" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CordovaLib/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-manifest">
-            <state />
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>searchMessage</find>
+    </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
     <option name="KEY_STORE_PATH" value="D:\Programming\aProjects\appMyShpora\keys\appkeys.jks" />
@@ -3079,19 +2999,20 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/assets/www/js/movieList.js" />
         <option value="$PROJECT_DIR$/settings.gradle" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/local.properties" />
-        <option value="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
         <option value="$PROJECT_DIR$/wrapper.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/assets/www/addMovie.html" />
         <option value="$PROJECT_DIR$/app/src/main/assets/www/css/style.css" />
         <option value="$PROJECT_DIR$/app/src/main/assets/www/serialList.html" />
+        <option value="$PROJECT_DIR$/app/src/main/assets/www/movieList.html" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/xml/config.xml" />
+        <option value="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
+        <option value="$PROJECT_DIR$/app/src/main/assets/www/js/movieList.js" />
         <option value="$PROJECT_DIR$/app/src/main/assets/www/js/serialList.js" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/assets/www/movieList.html" />
       </list>
     </option>
   </component>
@@ -3117,7 +3038,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -3146,35 +3066,6 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="assets" type="edd41e36:AndroidSourceTypeNode" />
               <item name="www" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="cordova-js-src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="assets" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="www" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="cordova-js-src" type="462c0819:PsiDirectoryNode" />
-              <item name="android" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="assets" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="www" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="assets" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="www" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="assets" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="www" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -3193,12 +3084,6 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
               <item name="mipmap" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="android" type="1abcf292:AndroidViewProjectNode" />
@@ -3222,8 +3107,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -3411,7 +3297,8 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3293011" sideWeight="0.10458453" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3293011" sideWeight="0.10959885" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1747851" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -3420,7 +3307,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3293011" sideWeight="0.8954155" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3293011" sideWeight="0.8904011" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -3436,6 +3323,9 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -3449,34 +3339,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CordovaLib/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#799#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CordovaLib/cordova.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#858#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/icon.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -3487,9 +3349,9 @@
         <state relative-caret-position="17">
           <caret line="1" column="71" lean-forward="false" selection-start-line="1" selection-start-column="71" selection-end-line="1" selection-end-column="71" />
           <folding>
-            <element signature="e#581#599#0" expanded="true" />
-            <element signature="e#738#761#0" expanded="true" />
-            <element signature="e#969#992#0" expanded="true" />
+            <element signature="e#586#604#0" expanded="true" />
+            <element signature="e#743#766#0" expanded="true" />
+            <element signature="e#974#997#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3575,9 +3437,9 @@
         <state relative-caret-position="17">
           <caret line="1" column="71" lean-forward="false" selection-start-line="1" selection-start-column="71" selection-end-line="1" selection-end-column="71" />
           <folding>
-            <element signature="e#581#599#0" expanded="true" />
-            <element signature="e#738#761#0" expanded="true" />
-            <element signature="e#969#992#0" expanded="true" />
+            <element signature="e#586#604#0" expanded="true" />
+            <element signature="e#743#766#0" expanded="true" />
+            <element signature="e#974#997#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3737,14 +3599,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CordovaLib/cordova.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-306">
@@ -3755,15 +3609,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/www/js/auth.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="29" lean-forward="false" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/www/addMovie.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="29" lean-forward="false" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/www/js/auth.js">
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/www/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="22" lean-forward="false" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CordovaLib/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -3773,64 +3645,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/assets/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-646">
+        <state relative-caret-position="17">
           <caret line="7" column="29" lean-forward="false" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/www/addMovie.html">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="19" column="29" lean-forward="false" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/www/css/style.css">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="26" column="35" lean-forward="false" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+        <state relative-caret-position="136">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CordovaLib/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/icon.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/www/js/serialList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="269" column="43" lean-forward="false" selection-start-line="269" selection-start-column="43" selection-end-line="269" selection-end-column="43" />
+        <state relative-caret-position="68">
+          <caret line="4" column="26" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/www/js/movieList.js">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/border_bottom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="178" column="52" lean-forward="false" selection-start-line="178" selection-start-column="52" selection-end-line="178" selection-end-column="52" />
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/assets/www/movieList.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="27" column="90" lean-forward="false" selection-start-line="27" selection-start-column="90" selection-end-line="27" selection-end-column="90" />
+        <state relative-caret-position="170">
+          <caret line="118" column="39" lean-forward="false" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="39" />
+          <folding>
+            <element signature="e#4037#4057#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/www/js/movieList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="106" column="36" lean-forward="false" selection-start-line="106" selection-start-column="36" selection-end-line="106" selection-end-column="36" />
           <folding />
         </state>
       </provider>
@@ -3843,19 +3709,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/www/js/serialList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="71" lean-forward="false" selection-start-line="1" selection-start-column="71" selection-end-line="1" selection-end-column="71" />
-          <folding>
-            <element signature="e#581#599#0" expanded="true" />
-            <element signature="e#738#761#0" expanded="true" />
-            <element signature="e#969#992#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="544">
+          <caret line="35" column="66" lean-forward="false" selection-start-line="35" selection-start-column="66" selection-end-line="35" selection-end-column="66" />
+          <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/www/js/newseries.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider editor-type-id="android-manifest">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="99" lean-forward="false" selection-start-line="1" selection-start-column="99" selection-end-line="1" selection-end-column="99" />
+          <folding>
+            <element signature="e#586#604#0" expanded="true" />
+            <element signature="e#743#766#0" expanded="true" />
+            <element signature="e#974#997#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>

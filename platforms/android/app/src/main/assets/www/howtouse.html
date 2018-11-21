@@ -1,0 +1,132 @@
+﻿<html>
+	<head>
+		<title>
+			Vue JS
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+	</head>
+	<body>
+		<div class="movieContainer" >
+			<template>
+				<v-app>
+					<!--  Start menu block -->
+					<v-navigation-drawer
+						v-model="menuEnable"
+						fixed
+						temporary
+						width=250
+					>
+						<v-list class="pa-1">
+							<v-list-tile class="top-block-menu">
+
+								<v-list-tile-content>
+									<v-list-tile-title class="top-block-menu-text">whatsee</v-list-tile-title>
+								</v-list-tile-content>
+							</v-list-tile>
+						</v-list>
+						<v-list class="pt-0" dense>
+							<v-divider></v-divider>
+
+							<v-list-tile
+								v-for="item in menu"
+								key="item.id"
+								:href="item.href"
+								@click=""
+								class="menu-item"
+							>
+								<v-list-tile-action>
+									<v-icon>{{ item.icon }}</v-icon>
+								</v-list-tile-action>
+
+								<v-list-tile-content>
+									<v-list-tile-title class="menu-item-text">{{ item.name }}</v-list-tile-title>
+								</v-list-tile-content>
+							</v-list-tile>
+						</v-list>
+					</v-navigation-drawer>
+					<!-- end menu block -->
+					<!-- Toolbar -->
+					<v-toolbar dark color="primary" class="my-toolbar">
+						<v-toolbar-side-icon v-on:click.stop="menuEnable = !menuEnable"></v-toolbar-side-icon>
+						<v-toolbar-title class="white--text">Список фильмов</v-toolbar-title>
+						<v-spacer></v-spacer>
+						<v-menu offset-y>
+							<v-btn icon slot="activator" color="primary" dark>
+								<v-icon>more_vert</v-icon>
+							</v-btn>
+							<v-list>
+								<v-list-tile
+									v-for="(item, index) in menuContext"
+									:key="item.id"
+									@click="">
+									<v-list-tile-title>{{ item.name }}</v-list-tile-title>
+								</v-list-tile>
+							</v-list>
+						</v-menu>
+					</v-toolbar>
+					<!-- End toolbar -->
+					<v-expansion-panel>
+						<v-expansion-panel-content>
+							<div slot="header"><b>Как добавить фильм или сериал</b></div>
+							<v-card>
+								<v-card-text>
+								Чтобы добавить фильм или сериал, перейдите в раздел <b>"Добавить"</b> укажите название фильма и выберите тип, после чего нажмите кнопку "Добавить". Фильм будет сохранет в соответсвующем разделе (<b>"Мои фильмы"</b> или <b>"Мои сериалы"</b>).
+								</v-card-text>
+							</v-card>
+						</v-expansion-panel-content>
+						<v-expansion-panel-content>
+							<div slot="header"><b>Раздел "Мои фильмы"</b></div>
+							<v-card>
+								<v-card-text>
+								В данном разделе сохраняются добавленные Вами фильмы. Также по фильму который Вы добавили можно проверсти поиск, нажав на кнопку <b>"Найти фильм"</b>. Приложение найдет схожие по названию фильмы, что бы Вы смогли ознакомиться с его постером, описанием, рейтингом (kinopoisk) и годом выпуска. Если Вы нашли фильм, который искали, нажмите "Это он" и все его данные автоматически добавяться к фильму который добавили Вы. <b>Важно!</b> Чтобы добавить описание фильма, <b>требуется нажать кнопку "Описание"</b>, когда ищите фильм. Любым фильмом или сериалом можно поделиться, просто нажмите на значок <v-icon>share</v-icon> и ссылка на данный фильм будет скопирована в буфер обмена.
+								</v-card-text>
+							</v-card>
+						</v-expansion-panel-content>
+						<v-expansion-panel-content>
+							<div slot="header"><b>Раздел "Мои сериалы"</b></div>
+							<v-card>
+								<v-card-text>
+								Функционал этого раздела аналогичен разделу <b>"Мои фильмы"</b> за исключением учета просмотренных серий. Для того, что бы не забыть на какой серии Вы остановились, приложение спросит на какой Вы сейчас серии и по каким дням выходит сериал, после того как будут указаны эти параметры, будет сформирован список серий, которые Вы сможете отмечать как просмотренные или непросмотренные. 
+								</v-card-text>
+							</v-card>
+						</v-expansion-panel-content>
+						<v-expansion-panel-content>
+							<div slot="header"><b>Раздел "Новые серии"</b></div>
+							<v-card>
+								<v-card-text>
+								В данном разделе будут отображены дни недели, при выборе дня, Вы сможете посмотреть какие серии Вашего сериала выйдут в этот день. 
+								</v-card-text>
+							</v-card>
+						</v-expansion-panel-content>
+					</v-expansion-panel>
+				</v-app>
+			</template>
+						<input type="hidden" id="testing-code" >
+		</div>
+	</body>
+	
+	<!-- OLD MENU 	
+	  <div v-bind:class="menu_class" v-if="menu_enable">
+		<div class="close-menu" v-on:click="menu_enable = false;">
+			<span></span>
+		</div>
+		<menu-items 
+			v-for="item in menu"
+			v-bind:key = "item.id"
+			v-bind:id="item.id"
+			v-bind:name="item.name"
+			v-bind:class="menuItem_class">					
+		</menu-items>
+	  </div>
+	END OLD MENU -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.js"></script>
+	<script src="js/axios.min.js"></script>
+	<script src="js/movieList.js"></script>
+</html>

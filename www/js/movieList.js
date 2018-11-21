@@ -19,7 +19,7 @@ var app = new Vue({
 		userData: {},
 		menuEnable: null, // close or open main menu
 		menu:[
-			{name:'Добавить фльм', id:1, icon:'add_circle_outline', href:'addMovie.html'},
+			{name:'Добавить', id:1, icon:'add_circle_outline', href:'addMovie.html'},
 			{name:'Мои фильмы', id:2, icon:'ondemand_video', href:'movieList.html'},
 			{name:'Мои сериалы', id:3, icon:'personal_video', href:'serialList.html'},
 			{name:'Как пользоваться', id:4, icon:'list', href:'howtouse.html'},
@@ -105,7 +105,6 @@ var app = new Vue({
 		},
 		searchFilm(name, id_film){
 			this.searchedFilms = [];
-			this.searchMessage = null;
 			this.showCards = !this.showCards;
 			axios.get('http://quicknote.bget.ru/', {
 				params:{

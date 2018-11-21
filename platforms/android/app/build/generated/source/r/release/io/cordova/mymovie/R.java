@@ -9,10 +9,21 @@ package io.cordova.mymovie;
 
 public final class R {
   public static final class drawable {
-    public static final int screen=0x7f010000;
+    public static final int athome=0x7f010001;
+    public static final int bluelogo=0x7f010002;
+    public static final int close=0x7f010003;
+    public static final int copyicon=0x7f010004;
+    public static final int delete=0x7f010005;
+    public static final int ic_launcher_foreground=0x7f010006;
+    public static final int iconbig=0x7f010007;
+    public static final int options=0x7f010008;
+    public static final int solvetask=0x7f010009;
+    public static final int whitelogo=0x7f01000a;
+    public static final int whiteonblue=0x7f01000b;
   }
   public static final class mipmap {
-    public static final int icon=0x7f020000;
+    public static final int ic_launcher=0x7f020000;
+    public static final int ic_launcher_round=0x7f020001;
   }
   public static final class string {
     public static final int activity_name=0x7f030000;
