@@ -41,6 +41,8 @@ var app = new Vue({
 		],
 		weekDaysSelected:null, 
 		manySeries:null,
+		seasonNumber: null,
+		showseasonForm: false,
 		/* container for film list of user*/
 		films:[],
 		searchedFilms:[],
@@ -58,6 +60,29 @@ var app = new Vue({
 		copyMessage: "Нажмите, что б скопировать ссылку в буфер обмена"
 	},
 	methods:{
+		showCloseSeason(id){
+			document.getElementById('season_form_'+id).style.display = 'block';
+		},
+		closeSeason(id_film, counter){
+			document.getElementById('season_form_'+id_film).style.display = 'none';
+			axios.get('http://quicknote.bget.ru/', {
+				params:{ 
+					seasonNumber: this.seasonNumber,
+					id_user: this.userData.id,
+					id_film: id_film,
+					action:'closeSeason'
+				}
+			}).then(response => {
+				
+				let request = response.data;
+				console.log(request);
+				this.films[counter].series = false;
+				this.films[counter].watched = [...this.films[counter].watched, request['watched']]
+				
+			}).catch(error => {					
+				console.log(error);
+			});
+		},
 		saveSeries(id, iteration){
 			var countSeries = this.manySeries;
 			var published = null;
@@ -236,23 +261,23 @@ var app = new Vue({
 		},
 		getDescriptionFilm(url, idFilm){
 			document.getElementById('describe-'+idFilm).innerHTML = "Загружаю...";
+			document.getElementById('describe-'+idFilm).disabled = true;
+			this.searchedFilms[idFilm].description = "<b>В основном, я нахожу описание достаточно быстро, но в редких случаях надо подождать..</b>";
 			axios.get('http://quicknote.bget.ru/', {
 				params:{
 					url: url,
 					action:'getDescription'
 				}
 			}).then(response => {
-				//film_description = response.data.description;
-				//document.getElementById(idFilm).innerHTML = response.data.description;
 				this.searchedFilms[idFilm].description = response.data.description;
 				document.getElementById('describe-'+idFilm).style.display="none";
 			}).catch(error => {					
 				console.log(error);
+				document.getElementById('describe-'+idFilm).disabled = false;
 				document.getElementById('describe-'+idFilm).innerHTML = "Ошибка, попробуйте позже";
 			});			
 		},
 		seenMovie(id_film, counter){
-			console.log(`id film: ${id_film} id user ${this.userData.id} counter: ${counter}`);
 			axios.get('http://quicknote.bget.ru/', {
 				params:{
 					id_film: id_film,

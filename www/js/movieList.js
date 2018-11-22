@@ -145,18 +145,19 @@ var app = new Vue({
 		},
 		getDescriptionFilm(url, idFilm){
 			document.getElementById('describe-'+idFilm).innerHTML = "Загружаю...";
+			document.getElementById('describe-'+idFilm).disabled = true;
+			this.searchedFilms[idFilm].description = "<b>В основном, я нахожу описание достаточно быстро, но в редких случаях надо подождать..</b>";
 			axios.get('http://quicknote.bget.ru/', {
 				params:{
 					url: url,
 					action:'getDescription'
 				}
 			}).then(response => {
-				//film_description = response.data.description;
-				//document.getElementById(idFilm).innerHTML = response.data.description;
 				this.searchedFilms[idFilm].description = response.data.description;
 				document.getElementById('describe-'+idFilm).style.display="none";
 			}).catch(error => {					
 				console.log(error);
+				document.getElementById('describe-'+idFilm).disabled = false;
 				document.getElementById('describe-'+idFilm).innerHTML = "Ошибка, попробуйте позже";
 			});			
 		},

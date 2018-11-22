@@ -113,28 +113,45 @@
 										<v-chip label @click="correctSeria(film.id, film.series.length, i, 'new')" class="new-seria">+</v-chip>
 										<v-chip label @click="correctSeria(film.id, film.series.length, i, 'del')" class="delete-seria">-</v-chip>
 										<div class="close-season">
-											<v-chip label @click="closeSeason(film.id)">Сезон закрыт</v-chip>
+											<v-chip label @click="showCloseSeason(film.id)">Посмотрел сезон</v-chip>
+											<v-form :id="'season_form_'+film.id" class="none">
+												<v-text-field
+													width=50
+													label="Укажите номер просмотренного сезона"
+													type="number"
+													v-model="seasonNumber"
+													:rules="onlyNumbers"											
+													required
+												></v-text-field>
+												<v-btn @click = "closeSeason(film.id, i)" >Сохранить</v-btn>
+											</v-form>
 										</div>
 									</div>
 									<div class="serial-settings" v-if="!film.series">
-									<v-form>
-										<v-select 
-											label="В какой день выходят серии?" 
-											:items="weekDays"
-											item-text="name"
-											item-value="id"
-											v-model = "weekDaysSelected"
-										></v-select>
-										<v-text-field
-											width=50
-											label="На какой сейчас серии?"
-											type="number"
-											:rules="onlyNumbers"
-											v-model="manySeries"											
-											required
-										></v-text-field>
-										<v-btn @click = "film.series = true; saveSeries(film.id, i)" >Сохранить</v-btn>
-									</v-form>
+										<v-form>
+											<v-select 
+												label="В какой день выходят серии?" 
+												:items="weekDays"
+												item-text="name"
+												item-value="id"
+												v-model = "weekDaysSelected"
+											></v-select>
+											<v-text-field
+												width=50
+												label="На какой сейчас серии?"
+												type="number"
+												:rules="onlyNumbers"
+												v-model="manySeries"											
+												required
+											></v-text-field>
+											<v-btn @click = "film.series = true; saveSeries(film.id, i)" >Сохранить</v-btn>
+										</v-form>
+									</div>
+									<div class="watched text-xs-center" v-if="film.watched">
+										<v-chip v-for="season in film.watched">
+											<v-avatar class="seen">{{season.count}}</v-avatar>
+											Сезон {{season.season_number}}
+										</v-chip>
 									</div>
 									<button class="delete-movie-btn" @click = "deleteFromList(film.id, i)"><v-icon>delete</v-icon></button>
 									<button  class="share-movie-btn" @click.stop.prevent = "shareMovie(film.token)">
