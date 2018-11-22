@@ -84,13 +84,14 @@
 											:items="films"
 											class="elevation-1"
 										  >
-											<template slot="items" slot-scope="props" v-if="day.name == props.item.series[0].date_publishion">
-											  <td><b>{{ props.item.name }}</b></td>
-											  <td class="text-xs-center">
-												{{ props.item.series[props.item.series.length-1].date_seen }} 
-												<b>({{ countDaysLater(props.item.series[props.item.series.length-1].date_seen)  }})</b>
+											<template slot="items" slot-scope="props" 
+												v-if="props.item.series && (day.name == props.item.series[0].date_publishion)">
+												<td><b>{{ props.item.name }}</b></td>
+												<td class="text-xs-center">
+													{{ props.item.series[props.item.series.length-1].date_seen }} 
+													<b>({{ countDaysLater(props.item.series[props.item.series.length-1].date_seen)  }})</b>
 												</td>
-											  <td class="text-xs-center">{{props.item.series.length - 1}} серий</td>
+												<td class="text-xs-center">{{props.item.series.length - 1}} серий</td>
 											</template>
 										  </v-data-table>
 									</v-card-text>

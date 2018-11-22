@@ -77,7 +77,9 @@ var app = new Vue({
 				let request = response.data;
 				console.log(request);
 				this.films[counter].series = false;
-				this.films[counter].watched = [...this.films[counter].watched, request['watched']]
+				if(this.films[counter].watched){
+					this.films[counter].watched = [...this.films[counter].watched, request['watched']];
+				}else{this.films[counter].watched = [request['watched']];}
 				
 			}).catch(error => {					
 				console.log(error);
