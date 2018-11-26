@@ -88,8 +88,9 @@
 												v-if="props.item.series && (day.name == props.item.series[0].date_publishion)">
 												<td><b>{{ props.item.name }}</b></td>
 												<td class="text-xs-center">
-													{{ props.item.series[props.item.series.length-1].date_seen }} 
-													<b>({{ countDaysLater(props.item.series[props.item.series.length-1].date_seen)  }})</b>
+													{{  searchLaterSeenSeria(props.item).date_seen || 'Ни одной серии'}} 
+													<!--<b>({{ countDaysLater(props.item.series[props.item.series.length-1].date_seen)  }})</b>-->
+													<b>({{(searchLaterSeenSeria(props.item).date_seen)?countDaysLater(searchLaterSeenSeria(props.item).date_seen):'' }})</b>
 												</td>
 												<td class="text-xs-center">{{props.item.series.length - 1}} серий</td>
 											</template>

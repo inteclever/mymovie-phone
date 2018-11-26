@@ -238,6 +238,18 @@ var app = new Vue({
 			var days = hours / 24;
 			console.log(Math.ceil(days));
 			return Math.ceil(days);
+		},
+		searchLaterSeenSeria(film){
+			var seria = {number:film.series[0].number, date_seen:false};
+			film.series.forEach((item, iterator)=>{
+				if(item.number > seria.number && item.seen == 1){
+					seria.number = item.number;
+					seria.date_seen = item.date_seen;
+					console.log(seria);
+					return false;
+				}
+			});
+			return seria;
 		}
 	},
 	
